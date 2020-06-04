@@ -1,22 +1,26 @@
 #include <stdio.h>
-#include <wiringPi.h>
+#include <bcm2835.h>
 
 // LED Pin
 #define LED 17
 
 int main(void)
 {
-    printf("Raspberry Pi StreamDeck");
+    printf("Raspberry Pi StreamDeck\n");
 
-    wiringPiSetupGpio();
-    pinMode(LED, OUTPUT);
+    // Initialize bcm2835
+    if (!bcm2835_init()) return 1;
+
+    bcm2835_gpio_fsel(LED, BCM2835_GPIO_FSEL_OUTP);
+    unsigned int delay = 500;
 
     int x;
     for (x=0; x<5; x++)
     {
-        digitalWrite(LED, HIGH);
-        delay(500);
-        digitalWrite(LED, LOW);
-        delay(500);
+        bcm2835_gpio_set(LED);
+        bcm2835_delay(delay);
+        bcm2835_gpio_clr(LED);
+        bcm2835_delay(delay);
     }
+    return 0;
 }
