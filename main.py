@@ -1,4 +1,4 @@
-#!/usr/env python
+#!/usr/bin/env python
 
 import RPI.GPIO as GPIO
 from time import sleep
