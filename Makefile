@@ -2,10 +2,10 @@
 CC = gcc
 
 # Flags
-CFLAGS = -g -Wall -l bcm2835
+CFLAGS = -g -Wall
 
 # Target
-TARGET = sdeck
+TARGET = src/scoreman-deck
 
 all: $(TARGET)
 
