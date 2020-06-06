@@ -12,7 +12,7 @@ int main(void)
     if (!bcm2835_init()) return 1;
 
     bcm2835_gpio_fsel(LED, BCM2835_GPIO_FSEL_OUTP);
-    unsigned int delay = 500;
+    unsigned int delay = 1000;
 
     int x;
     for (x=0; x<5; x++)
