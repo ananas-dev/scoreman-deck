@@ -10,7 +10,7 @@ TARGET = src/scoreman-deck
 all: $(TARGET)
 
 $(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c -l bcm2835
+	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
 
 clean:
 	$(RM) $(TARGET)

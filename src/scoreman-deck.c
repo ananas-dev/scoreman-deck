@@ -1,4 +1,4 @@
-#include <wiringPi.h>
+#include "../include/wiringPi.h"
 #include<stdio.h>
 
 /* Pins layout */
@@ -34,7 +34,7 @@ int main(void)
 
     /* Main loop */
 
-    printf(":: Listenig inputs")
+    printf(":: Listenig inputs");
     while(1)
     {
         /* Check if the buttons are pushed */
