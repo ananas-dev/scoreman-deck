@@ -29,4 +29,5 @@ void main(void)
             input = 0x1
         }
     }
+    return 0;
 }
