@@ -7,18 +7,18 @@ void main(void)
 {
     short input;
 
-    printf(":: Starting...\n")
+    printf(":: Starting...\n");
 
     /* Initialize wiringPi */
-    printf(" (1/3) Initializing wiringPi\n")
+    printf(" (1/3) Initializing wiringPi\n");
     wiringPiSetup(); 
 
     /* Set the button to input */
-    printf(" (2/3) Set the button to input\n")
+    printf(" (2/3) Set the button to input\n");
     pinMode(buttonPin, INPUT);
 
     /* Set pull up to HIGH level */
-    printf(" (3/3) Set pull up to HIGH level\n")
+    printf(" (3/3) Set pull up to HIGH level\n");
     pullUpDnControl(buttonPin, PUD_UP);
 
     /* Main loop */
@@ -26,8 +26,9 @@ void main(void)
     {
         if (digitalRead(buttonPin) == LOW)
         {
-            input = 0x1
+            input = 0x1;
         }
+    printf("%d", input);
     }
     return 0;
 }
