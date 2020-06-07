@@ -1,4 +1,4 @@
-#include <wiringPi>
+#include <wiringPi.h>
 #include<stdio.h>
 
 #define buttonPin 1
