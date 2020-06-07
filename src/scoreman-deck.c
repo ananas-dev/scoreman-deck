@@ -1,42 +1,33 @@
-#include <stdio.h>
-#include "../include/bcm2835.h"
+#include <wiringPi.h>
+#include<stdio.h>
 
-/* Map pins */
-#define BUTTON1 18
-#define BUTTON2 23
-#define BUTTON3 24
-#define BUTTON4 25
+#define buttonPin 1
 
 int main(void)
 {
-    printf("Raspberry Pi StreamDeck\n");
+    short input;
 
-    /* Initialize bcm2835 */
-    if (!bcm2835_init()) return 1;
+    printf(":: Starting...\n");
 
-    /* Set buttons to output mode */
-    bcm2835_gpio_fsel(BUTTON1, BCM2835_GPIO_FSEL_INPT);
-    bcm2835_gpio_fsel(BUTTON2, BCM2835_GPIO_FSEL_INPT);
-    bcm2835_gpio_fsel(BUTTON3, BCM2835_GPIO_FSEL_INPT);
-    bcm2835_gpio_fsel(BUTTON4, BCM2835_GPIO_FSEL_INPT);
-    /* Set pud-up */
-    bcm2835_gpio_set_pud(BUTTON1, BCM2835_GPIO_PUD_UP);
-    bcm2835_gpio_set_pud(BUTTON2, BCM2835_GPIO_PUD_UP);
-    bcm2835_gpio_set_pud(BUTTON3, BCM2835_GPIO_PUD_UP);
-    bcm2835_gpio_set_pud(BUTTON4, BCM2835_GPIO_PUD_UP);
-    
-    unsigned int delay = 50;
+    /* Initialize wiringPi */
+    printf(" (1/3) Initializing wiringPi\n");
+    wiringPiSetup(); 
 
-/*
+    /* Set the button to input */
+    printf(" (2/3) Set the button to input\n");
+    pinMode(buttonPin, INPUT);
+
+    /* Set pull up to HIGH level */
+    printf(" (3/3) Set pull up to HIGH level\n");
+    pullUpDnControl(buttonPin, PUD_UP);
+
+    /* Main loop */
     while(1)
     {
-        bcm2835_gpio_write(LED, LOW);
-        bcm2835_delay(delay);
-        bcm2835_gpio_write(LED, HIGH);
-        bcm2835_delay(delay);
+        if (digitalRead(buttonPin) == LOW)
+        {
+            input = 0x1;
+        }
     }
-    bcm2835_close();
     return 0;
 }
-
-*/
