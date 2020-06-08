@@ -47,7 +47,7 @@
 int main(void)
 {
     /* Initialize variables */
-    short int input = 0x0;
+    short int input;
 
     printf(":: Starting...\n");
 
@@ -75,40 +75,40 @@ int main(void)
     while(1)
     {
         /* Check if the buttons are pushed */
-        if (digitalRead(button1Pin) == LOW)
+        if(digitalRead(button1Pin) == LOW)
         {
             input = 0x1;
             printf("%x\n", input);
             while(1)
             {
-                if (digitalRead(button1Pin) == HIGH) { break; }
+                if(digitalRead(button1Pin) == HIGH) break;
             }
         }
-        if (digitalRead(button2Pin) == LOW)
+        if(digitalRead(button2Pin) == LOW)
         {
             input = 0x2;
             printf("%x\n", input);
             while(1)
             {
-                if (digitalRead(button2Pin) == HIGH) { break; }
+                if(digitalRead(button2Pin) == HIGH) break;
             }
         }
-        if (digitalRead(button3Pin) == LOW)
+        if(digitalRead(button3Pin) == LOW)
         {
             input = 0x3;
             printf("%x\n", input);
             while(1)
             {
-                if (digitalRead(button3Pin) == HIGH) { break; }
+                if(digitalRead(button3Pin) == HIGH) break;
             }
         }
-        if (digitalRead(button4Pin) == LOW)
+        if(digitalRead(button4Pin) == LOW)
         {
             input = 0x4;
             printf("%x\n", input);
             while(1)
             {
-                if (digitalRead(button4Pin) == HIGH) { break; }
+                if(digitalRead(button4Pin) == HIGH) break;
             }
         }
     }
