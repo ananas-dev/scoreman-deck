@@ -83,7 +83,7 @@ int main(void)
             {
                 if(digitalRead(button1Pin) == HIGH)
                 {
-                    delay(100);
+                    delay(150);
                     break;
                 }
             }
@@ -96,7 +96,7 @@ int main(void)
             {
                 if(digitalRead(button2Pin) == HIGH)
                 {
-                    delay(100);
+                    delay(150);
                     break;
                 }
             }
@@ -109,7 +109,7 @@ int main(void)
             {
                 if(digitalRead(button3Pin) == HIGH)
                 {
-                    delay(100);
+                    delay(150);
                     break;
                 }
             }
@@ -122,7 +122,7 @@ int main(void)
             {
                 if(digitalRead(button4Pin) == HIGH)
                 {
-                    delay(100);
+                    delay(150);
                     break;
                 }
             }
