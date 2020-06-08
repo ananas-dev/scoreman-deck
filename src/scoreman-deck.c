@@ -1,11 +1,41 @@
+/*
+ * Name: scoreman.c
+ * Author: Lucien Fiorini
+ * Project: Scoreman Deck
+ * Version: 0.5
+ * Licence: MIT
+ */
+
+#include <stdio.h>
 #include "../include/wiringPi.h"
-#include<stdio.h>
+
+/* wiringPi pins layout:
+NAME:   BCM GPIO:   WIRINGPI PIN:
+---------------------------------
+SDA     2           8                
+SCL     3           9
+GPIO7   4           7
+GPIO0   17          0
+GPIO2   27          2
+GPIO3   22          3
+MOSI    10          13
+MISO    9           12
+SCLK    11          14
+TxD     14          15
+RxD     15          16
+GPIO1   18          1
+GPIO4   23          4
+GPIO5   24          5
+GPIO6   25          6
+CEO     8           10
+CE1     7           11
+*/
 
 /* Pins layout */
-#define BUTTON_1 1 // Pin 18
-#define BUTTON_2 4 // Pin 23
-#define BUTTON_3 5 // Pin 24
-#define BUTTON_4 6 // Pin 25
+#define BUTTON_1 1 // BCM18
+#define BUTTON_2 4 // BCM23
+#define BUTTON_3 5 // BCM24
+#define BUTTON_4 6 // BCM25
 
 int main(void)
 {
