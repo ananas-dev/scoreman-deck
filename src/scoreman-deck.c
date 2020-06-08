@@ -49,81 +49,39 @@ int main(void)
     /* Initialize variables */
     short int input;
 
-    printf(":: Starting...\n");
+    short int buttons[] = { button1Pin, button2Pin, button3Pin, button4Pin };
 
     /* Initialize wiringPi */
-    printf(" (1/3) Initializing wiringPi\n");
     wiringPiSetup();
 
-    /* Set the button to input */
-    printf(" (2/3) Set the buttons to input\n");
-    pinMode(button1Pin, INPUT);
-    pinMode(button2Pin, INPUT);
-    pinMode(button3Pin, INPUT);
-    pinMode(button4Pin, INPUT);
-
-    /* Set pull up to HIGH level */
-    printf(" (3/3) Set pull up to HIGH level\n");
-    pullUpDnControl(button1Pin, PUD_UP);
-    pullUpDnControl(button2Pin, PUD_UP);
-    pullUpDnControl(button3Pin, PUD_UP);
-    pullUpDnControl(button4Pin, PUD_UP);
+    for(unsigned short i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
+    {
+        /* Set the button to input */
+        pinMode(buttons[i], INPUT);
+        /* Set pull up to HIGH level */
+        pullUpDnControl(buttons[i], PUD_UP);
+    }
 
     /* Main loop */
 
     printf(":: Listening inputs\n");
     while(1)
     {
-        /* Check if the buttons are pushed */
-        if(digitalRead(button1Pin) == LOW)
+        for(unsigned short i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
         {
-            input = 0x1;
-            printf("%x\n", input);
-            while(1)
+
+            /* Check push state of the buttons */
+            if(digitalRead(buttons[i]) == LOW)
             {
-                if(digitalRead(button1Pin) == HIGH)
+                input = i;
+                printf("%x\n", input);
+                while(1)
                 {
-                    delay(150);
-                    break;
-                }
-            }
-        }
-        if(digitalRead(button2Pin) == LOW)
-        {
-            input = 0x2;
-            printf("%x\n", input);
-            while(1)
-            {
-                if(digitalRead(button2Pin) == HIGH)
-                {
-                    delay(150);
-                    break;
-                }
-            }
-        }
-        if(digitalRead(button3Pin) == LOW)
-        {
-            input = 0x3;
-            printf("%x\n", input);
-            while(1)
-            {
-                if(digitalRead(button3Pin) == HIGH)
-                {
-                    delay(150);
-                    break;
-                }
-            }
-        }
-        if(digitalRead(button4Pin) == LOW)
-        {
-            input = 0x4;
-            printf("%x\n", input);
-            while(1)
-            {
-                if(digitalRead(button4Pin) == HIGH)
-                {
-                    delay(150);
-                    break;
+                    if(digitalRead(buttons[i]) == HIGH)
+                    {
+                        delay(150);
+                        break;
+                    }
                 }
             }
         }
