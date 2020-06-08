@@ -81,7 +81,11 @@ int main(void)
             printf("%x\n", input);
             while(1)
             {
-                if(digitalRead(button1Pin) == HIGH) break;
+                if(digitalRead(button1Pin) == HIGH)
+                {
+                    delay(100);
+                    break;
+                }
             }
         }
         if(digitalRead(button2Pin) == LOW)
@@ -90,7 +94,11 @@ int main(void)
             printf("%x\n", input);
             while(1)
             {
-                if(digitalRead(button2Pin) == HIGH) break;
+                if(digitalRead(button2Pin) == HIGH)
+                {
+                    delay(100);
+                    break;
+                }
             }
         }
         if(digitalRead(button3Pin) == LOW)
@@ -99,7 +107,11 @@ int main(void)
             printf("%x\n", input);
             while(1)
             {
-                if(digitalRead(button3Pin) == HIGH) break;
+                if(digitalRead(button3Pin) == HIGH)
+                {
+                    delay(100);
+                    break;
+                }
             }
         }
         if(digitalRead(button4Pin) == LOW)
@@ -108,7 +120,11 @@ int main(void)
             printf("%x\n", input);
             while(1)
             {
-                if(digitalRead(button4Pin) == HIGH) break;
+                if(digitalRead(button4Pin) == HIGH)
+                {
+                    delay(100);
+                    break;
+                }
             }
         }
     }
