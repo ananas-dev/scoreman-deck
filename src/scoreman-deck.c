@@ -53,7 +53,7 @@ int main(void)
 
     /* Initialize wiringPi */
     printf(" (1/3) Initializing wiringPi\n");
-    if(!wiringPiSetup()) {return 1;}
+    wiringPiSetup();
 
     /* Set the button to input */
     printf(" (2/3) Set the buttons to input\n");
@@ -78,6 +78,7 @@ int main(void)
         if (digitalRead(button1Pin) == LOW)
         {
             input = 0x1;
+            printf("%x\n", input);
             while(1)
             {
                 if (digitalRead(button1Pin) == HIGH) { break; }
@@ -86,6 +87,7 @@ int main(void)
         if (digitalRead(button2Pin) == LOW)
         {
             input = 0x2;
+            printf("%x\n", input);
             while(1)
             {
                 if (digitalRead(button2Pin) == HIGH) { break; }
@@ -94,6 +96,7 @@ int main(void)
         if (digitalRead(button3Pin) == LOW)
         {
             input = 0x3;
+            printf("%x\n", input);
             while(1)
             {
                 if (digitalRead(button3Pin) == HIGH) { break; }
@@ -102,13 +105,12 @@ int main(void)
         if (digitalRead(button4Pin) == LOW)
         {
             input = 0x4;
+            printf("%x\n", input);
             while(1)
             {
                 if (digitalRead(button4Pin) == HIGH) { break; }
             }
         }
-        /* Only output each inputs once */
-        printf("%x\n", input);
     }
     return 0;
 }
