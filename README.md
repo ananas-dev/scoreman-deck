@@ -46,6 +46,13 @@ To run scoreman-deck on your raspberry-pi you have to install wiringPi:
 sudo apt install gpio
 ```
 
+If you use a Raspberry Pi 4B I recommend to apply a patch because the lastest version on the repos doesnt support it:
+
+```bash
+wget https://project-downloads.drogon.net/wiringpi-latest.deb
+sudo dpkg -i wiringpi-latest.deb
+```
+
 Then:
 
 ```bash
