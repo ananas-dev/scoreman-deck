@@ -72,22 +72,22 @@ int main(void)
         {
             input = 0x1;
         }
-        if (digitalRead(BUTTON_1) == LOW)
+        if (digitalRead(BUTTON_2) == LOW)
         {
             input = 0x2;
         }
-        if (digitalRead(BUTTON_1) == LOW)
+        if (digitalRead(BUTTON_3) == LOW)
         {
             input = 0x3;
         }
-        if (digitalRead(BUTTON_1) == LOW)
+        if (digitalRead(BUTTON_4) == LOW)
         {
             input = 0x4;
         }
         /* Only output each inputs once */
         if(input != lastInput)
         {
-            printf("%d\n", input);
+            printf("%x\n", input);
         }
         lastInput = input;
     }
