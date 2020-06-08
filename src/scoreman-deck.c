@@ -39,35 +39,35 @@
 */
 
 /* Pins layout */
-#define BUTTON_1 1 // BCM18
-#define BUTTON_2 4 // BCM23
-#define BUTTON_3 5 // BCM24
-#define BUTTON_4 6 // BCM25
+#define button1Pin 1 // BCM18
+#define button2Pin 4 // BCM23
+#define button3Pin 5 // BCM24
+#define button4Pin 6 // BCM25
 
 int main(void)
 {
-    short input;
-    short lastInput;
+    /* Initialize variables */
+    short int input = 0x0;
 
     printf(":: Starting...\n");
 
     /* Initialize wiringPi */
     printf(" (1/3) Initializing wiringPi\n");
-    wiringPiSetup(); 
+    if(!wiringPiSetup()) {return 1;}
 
     /* Set the button to input */
     printf(" (2/3) Set the buttons to input\n");
-    pinMode(BUTTON_1, INPUT);
-    pinMode(BUTTON_2, INPUT);
-    pinMode(BUTTON_3, INPUT);
-    pinMode(BUTTON_4, INPUT);
+    pinMode(button1Pin, INPUT);
+    pinMode(button2Pin, INPUT);
+    pinMode(button3Pin, INPUT);
+    pinMode(button4Pin, INPUT);
 
     /* Set pull up to HIGH level */
     printf(" (3/3) Set pull up to HIGH level\n");
-    pullUpDnControl(BUTTON_1, PUD_UP);
-    pullUpDnControl(BUTTON_2, PUD_UP);
-    pullUpDnControl(BUTTON_3, PUD_UP);
-    pullUpDnControl(BUTTON_4, PUD_UP);
+    pullUpDnControl(button1Pin, PUD_UP);
+    pullUpDnControl(button2Pin, PUD_UP);
+    pullUpDnControl(button3Pin, PUD_UP);
+    pullUpDnControl(button4Pin, PUD_UP);
 
     /* Main loop */
 
@@ -75,28 +75,40 @@ int main(void)
     while(1)
     {
         /* Check if the buttons are pushed */
-        if (digitalRead(BUTTON_1) == LOW)
+        if (digitalRead(button1Pin) == LOW)
         {
             input = 0x1;
+            while(1)
+            {
+                if (digitalRead(button1Pin) == HIGH) { break; }
+            }
         }
-        if (digitalRead(BUTTON_2) == LOW)
+        if (digitalRead(button2Pin) == LOW)
         {
             input = 0x2;
+            while(1)
+            {
+                if (digitalRead(button2Pin) == HIGH) { break; }
+            }
         }
-        if (digitalRead(BUTTON_3) == LOW)
+        if (digitalRead(button3Pin) == LOW)
         {
             input = 0x3;
+            while(1)
+            {
+                if (digitalRead(button3Pin) == HIGH) { break; }
+            }
         }
-        if (digitalRead(BUTTON_4) == LOW)
+        if (digitalRead(button4Pin) == LOW)
         {
             input = 0x4;
+            while(1)
+            {
+                if (digitalRead(button4Pin) == HIGH) { break; }
+            }
         }
         /* Only output each inputs once */
-        if(input != lastInput)
-        {
-            printf("%x\n", input);
-        }
-        lastInput = input;
+        printf("%x\n", input);
     }
     return 0;
 }
