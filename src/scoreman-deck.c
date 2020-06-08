@@ -64,7 +64,7 @@ int main(void)
 
     /* Main loop */
 
-    printf(":: Listenig inputs");
+    printf(":: Listening inputs\n");
     while(1)
     {
         /* Check if the buttons are pushed */
@@ -87,7 +87,7 @@ int main(void)
         /* Only output each inputs once */
         if(input != lastInput)
         {
-            printf("%x\n", input);
+            printf("%d\n", input);
         }
         lastInput = input;
     }
